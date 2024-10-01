@@ -8,7 +8,7 @@ namespace IdleGame.Command
     public class CommandRunner : MonoBehaviour
     {
         [SerializeField] private bool autoRun = false;
-        [SerializeField] private List<CommandBehavior> startCommands = new();  
+        [SerializeField] private List<CommandBehavior> startCommands = new();
         private List<CommandBehavior> _commandList = new();  
         private bool _isRunning = false;
         private Coroutine _currentCommandCoroutine;
