@@ -16,17 +16,17 @@ namespace IdleGame.Command
 
         public override IEnumerator Execute()
         {
-            var distanceToTarget = Mathf.Abs(transform.position.y - target.position.y); 
+            var distanceToTarget = Mathf.Abs(_commandRunner.transform.position.y - target.position.y); 
     
             while (distanceToTarget > 0.01f)  
             {
                 var step = speed * Time.deltaTime; 
-                _commandRunner.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-                distanceToTarget = Mathf.Abs(transform.position.y - target.position.y);  
+                _commandRunner.transform.position = Vector3.MoveTowards(_commandRunner.transform.position, target.position, step);
+                distanceToTarget = Mathf.Abs(_commandRunner.transform.position.y - target.position.y);  
                 yield return null;  
             }
 
-            transform.position = target.position;
+            _commandRunner.transform.position = target.position;
         }
     }
 }

@@ -15,11 +15,7 @@ namespace IdleGame.Command
 
         private void Start()
         {
-            foreach (var command in startCommands)
-                AddCommand(command);
-            
-            if (autoRun)
-                Run();
+            if (autoRun) ResetAndRun();
         }
 
         public void AddCommand(CommandBehavior command)
@@ -28,12 +24,18 @@ namespace IdleGame.Command
             command.Init(transform);
         }
 
+        public void ResetAndRun()
+        {
+            if (_isRunning) return;
+
+            foreach (var command in startCommands)
+                AddCommand(command);
+            Run();
+        }
         public void Run()
         {
-            if (!_isRunning)
-            {
-                StartCoroutine(RunCommands());
-            }
+            if (_isRunning) return;
+            StartCoroutine(RunCommands());
         }
 
         private IEnumerator RunCommands()

@@ -18,19 +18,19 @@ namespace IdleGame.Command
         public override IEnumerator Execute()
         {
             var startPosition = transform.position;
-            var distanceToTarget = Mathf.Abs(transform.position.x - target.position.x); 
+            var distanceToTarget = Mathf.Infinity; 
             var xScale = startPosition.x < target.position.x ? 1 : -1;
             body.transform.localScale = new Vector3(xScale, 1, 1);
     
-            while (distanceToTarget > 0.01f)  
+            while (distanceToTarget > 0.1f)  
             {
                 var step = speed * Time.deltaTime; 
-                _commandRunner.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-                distanceToTarget = Mathf.Abs(transform.position.x - target.position.x);  
+                _commandRunner.transform.position = Vector3.MoveTowards(_commandRunner.transform.position, target.position, step);
+                distanceToTarget = Mathf.Abs(_commandRunner.transform.position.x - target.position.x);  
                 yield return null;  
             }
 
-            transform.position = target.position;
+            _commandRunner.transform.position = target.position;
         }
     }
 
