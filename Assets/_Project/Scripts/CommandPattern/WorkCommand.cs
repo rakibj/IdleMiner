@@ -6,6 +6,7 @@ namespace IdleGame.Command
 {
     public class WorkCommand : CommandBehavior
     {
+        [SerializeField] private GameObject progressBarParent;
         [SerializeField] private Image progressBar;
         [SerializeField] private float workDuration;
         private Transform _commander;
@@ -17,6 +18,7 @@ namespace IdleGame.Command
 
         public override IEnumerator Execute()
         {
+            progressBarParent.SetActive(true);
             var elapsed = 0f;
 
             while (elapsed < workDuration)
@@ -27,6 +29,7 @@ namespace IdleGame.Command
             }
 
             progressBar.fillAmount = 1f;
+            progressBarParent.SetActive(false);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace IdleGame.Command
 {
     public abstract class CommandBehavior : MonoBehaviour
     {
-        public abstract void Init(Transform commander);
+        public abstract void Init(Transform commandRunner);
         public abstract IEnumerator Execute();
     }
 }
