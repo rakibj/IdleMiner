@@ -12,7 +12,6 @@ namespace IdleGame.Command
         private List<CommandBehavior> _commandList = new();  
         private bool _isRunning = false;
         private Coroutine _currentCommandCoroutine;
-        public Action<CommandBehavior> OnCommandComplete;
 
         private void Start()
         {
@@ -49,7 +48,6 @@ namespace IdleGame.Command
                 _currentCommandCoroutine = StartCoroutine(command.Execute());
                 yield return _currentCommandCoroutine; 
 
-                OnCommandComplete?.Invoke(command);
                 _commandList.RemoveAt(0);  
             }
 
