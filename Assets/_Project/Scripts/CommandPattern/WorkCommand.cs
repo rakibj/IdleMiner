@@ -8,7 +8,7 @@ namespace IdleGame.Command
     {
         [SerializeField] private GameObject progressBarParent;
         [SerializeField] private Image progressBar;
-        [SerializeField] private float workDuration;
+        [SerializeField] private Stat workDurationStat;
         private Transform _commander;
 
         public override void Init(Transform commander)
@@ -21,9 +21,9 @@ namespace IdleGame.Command
             progressBarParent.SetActive(true);
             var elapsed = 0f;
 
-            while (elapsed < workDuration)
+            while (elapsed < workDurationStat.currentValue)
             {
-                progressBar.fillAmount = elapsed / workDuration;
+                progressBar.fillAmount = elapsed / workDurationStat.currentValue;
                 elapsed += Time.deltaTime;
                 yield return null; 
             }

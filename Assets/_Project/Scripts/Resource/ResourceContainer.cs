@@ -7,7 +7,7 @@ namespace IdleGame.Resource
 {
     public class ResourceContainer : MonoBehaviour
     {
-        [SerializeField] private float produceBy = 10f;
+        [SerializeField] private Stat produceByStat;
         [SerializeField] private ResourceContainer transferFrom;
         [SerializeField] private ResourceContainer transferTo;
         [SerializeField] private CommandRunner commandRunner;
@@ -16,13 +16,13 @@ namespace IdleGame.Resource
         [SerializeField] private CommandBehavior transferToCommand;
         [SerializeField] private float _currentResources = 0f;
         [SerializeField] private TMP_Text resourceAmountText;
-        [SerializeField] private float capacity= 50;
+        [SerializeField] private Stat capacityStat;
 
         private float CurrentResources
         {
             set
             {
-                _currentResources = Mathf.Min(capacity, value);
+                _currentResources = Mathf.Min(capacityStat.currentValue, value);
                 resourceAmountText.text = _currentResources.ToString("F0");
             }
             get => _currentResources;
@@ -45,7 +45,7 @@ namespace IdleGame.Resource
 
         private void OnCommandCompleted(CommandBehavior command)
         {
-            if(command == produceCommand) CurrentResources += produceBy;
+            if(command == produceCommand) CurrentResources += produceByStat.currentValue;
             if (command == transferFromCommand)
             {
                 ReceiveResources(transferFrom, transferFrom.ReleaseResources());

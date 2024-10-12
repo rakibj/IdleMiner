@@ -7,7 +7,7 @@ namespace IdleGame.Command
     {
         [SerializeField] private Transform target;
         [SerializeField] private Transform body;
-        [SerializeField] private float speed;
+        [SerializeField] private Stat speedStat;
         private Transform _commandRunner;
 
         public override void Init(Transform commandRunner)
@@ -24,7 +24,7 @@ namespace IdleGame.Command
     
             while (distanceToTarget > 0.1f)  
             {
-                var step = speed * Time.deltaTime; 
+                var step = speedStat.currentValue * Time.deltaTime; 
                 _commandRunner.transform.position = Vector3.MoveTowards(_commandRunner.transform.position, target.position, step);
                 distanceToTarget = Mathf.Abs(_commandRunner.transform.position.x - target.position.x);  
                 yield return null;  

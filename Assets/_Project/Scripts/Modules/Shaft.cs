@@ -8,13 +8,13 @@ namespace IdleGame.Modules
     public class Shaft : MonoBehaviour
     {
         [SerializeField] private MinerController minerTemplate;
-        [SerializeField] private int numberOfMiners = 1;
+        [SerializeField] private Stat numberOfMinerStat;
         private List<MinerController> _miners = new List<MinerController>();
         public int MinerCount => _miners.Count;
 
         private void Start()
         {
-            for (var i = 0; i < numberOfMiners; i++)
+            for (var i = 0; i < numberOfMinerStat.currentValue; i++)
             {
                 AddMiner(i);
             }
