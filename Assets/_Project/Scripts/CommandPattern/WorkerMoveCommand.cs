@@ -30,7 +30,7 @@ namespace IdleGame.Command
                 yield return null;  
             }
 
-            _commandRunner.transform.position = target.position;
+            // _commandRunner.transform.position = target.position;
         }
     }
 
