@@ -16,12 +16,13 @@ namespace IdleGame.Resource
         [SerializeField] private CommandBehavior transferToCommand;
         [SerializeField] private float _currentResources = 0f;
         [SerializeField] private TMP_Text resourceAmountText;
+        [SerializeField] private float capacity= 50;
 
         private float CurrentResources
         {
             set
             {
-                _currentResources = value;
+                _currentResources = Mathf.Min(capacity, value);
                 resourceAmountText.text = _currentResources.ToString("F0");
             }
             get => _currentResources;
