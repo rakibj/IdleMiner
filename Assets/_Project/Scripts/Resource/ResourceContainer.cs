@@ -1,5 +1,6 @@
 using System;
 using IdleGame.Command;
+using TMPro;
 using UnityEngine;
 
 namespace IdleGame.Resource
@@ -14,6 +15,22 @@ namespace IdleGame.Resource
         [SerializeField] private CommandBehavior transferFromCommand;
         [SerializeField] private CommandBehavior transferToCommand;
         [SerializeField] private float _currentResources = 0f;
+        [SerializeField] private TMP_Text resourceAmountText;
+
+        private float CurrentResources
+        {
+            set
+            {
+                _currentResources = value;
+                resourceAmountText.text = _currentResources.ToString("F0");
+            }
+            get => _currentResources;
+        }
+
+        private void Start()
+        {
+            CurrentResources = 0;
+        }
 
         private void OnEnable()
         {
@@ -27,7 +44,7 @@ namespace IdleGame.Resource
 
         private void OnCommandCompleted(CommandBehavior command)
         {
-            if(command == produceCommand) _currentResources += produceBy;
+            if(command == produceCommand) CurrentResources += produceBy;
             if (command == transferFromCommand)
             {
                 ReceiveResources(transferFrom, transferFrom.ReleaseResources());
@@ -41,14 +58,13 @@ namespace IdleGame.Resource
 
         private void ReceiveResources(ResourceContainer from, float resources)
         {
-            Debug.Log(gameObject.name + " received " + resources + " from " + from.gameObject.name);
-            _currentResources += resources;
+            CurrentResources += resources;
         }
 
         public float ReleaseResources()
         {
-            var tempResources = _currentResources;
-            _currentResources = 0f;
+            var tempResources = CurrentResources;
+            CurrentResources = 0f;
             return tempResources;
         }
     }

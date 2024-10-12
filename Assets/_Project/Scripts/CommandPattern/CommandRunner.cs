@@ -5,9 +5,11 @@ using UnityEngine;
 
 namespace IdleGame.Command
 {
+    [SelectionBase]
     public class CommandRunner : MonoBehaviour
     {
         [SerializeField] private bool autoRun = false;
+        [SerializeField] private bool loop = false;
         [SerializeField] private List<CommandBehavior> startCommands = new();
         private List<CommandBehavior> _commandList = new();  
         private bool _isRunning = false;
@@ -54,6 +56,7 @@ namespace IdleGame.Command
             }
 
             _isRunning = false;
+            if(loop) ResetAndRun();
         }
 
         public void StopCommand()
