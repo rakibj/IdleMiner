@@ -829,6 +829,7 @@ GameObject:
   - component: {fileID: 272077449}
   - component: {fileID: 272077448}
   - component: {fileID: 272077450}
+  - component: {fileID: 272077451}
   m_Layer: 0
   m_Name: Miner
   m_TagString: Untagged
@@ -943,6 +944,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4987682, y: 0.6497415}
   m_EdgeRadius: 0
+--- !u!114 &272077451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272077445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22b4fbd767649e2bff27c0a9079cd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  produceBy: 10
+  transferFrom: {fileID: 0}
+  transferTo: {fileID: 907388994}
+  commandRunner: {fileID: 272077447}
+  produceCommand: {fileID: 127481863}
+  transferFromCommand: {fileID: 0}
+  transferToCommand: {fileID: 395837997}
 --- !u!1 &287052533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,8 +1235,8 @@ Transform:
   m_GameObject: {fileID: 440402975}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001664447, y: -3.1374369, z: 0}
-  m_LocalScale: {x: 0.9909902, y: 5.3010693, z: 1}
+  m_LocalPosition: {x: -0.001664447, y: -3.137437, z: 0}
+  m_LocalScale: {x: 0.9909902, y: 5.301069, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1255077671}
@@ -1275,6 +1295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484277670}
   - component: {fileID: 484277669}
+  - component: {fileID: 484277671}
   m_Layer: 0
   m_Name: ElevatorBase
   m_TagString: Untagged
@@ -1350,6 +1371,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1129052821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &484277671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484277668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22b4fbd767649e2bff27c0a9079cd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  produceBy: 0
+  transferFrom: {fileID: 0}
+  transferTo: {fileID: 0}
+  commandRunner: {fileID: 0}
+  produceCommand: {fileID: 0}
+  transferFromCommand: {fileID: 0}
+  transferToCommand: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 907388992}
   - component: {fileID: 907388993}
+  - component: {fileID: 907388994}
   m_Layer: 0
   m_Name: ResourcesHolder
   m_TagString: Untagged
@@ -1781,7 +1822,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.8612, y: -2.3808, z: 0}
-  m_LocalScale: {x: 0.45178872, y: 0.26840705, z: 7.8704834}
+  m_LocalScale: {x: 0.4517887, y: 0.268407, z: 7.870483}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 731626001}
@@ -1839,6 +1880,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &907388994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907388991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22b4fbd767649e2bff27c0a9079cd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  produceBy: 10
+  transferFrom: {fileID: 0}
+  transferTo: {fileID: 0}
+  commandRunner: {fileID: 0}
+  produceCommand: {fileID: 0}
+  transferFromCommand: {fileID: 0}
+  transferToCommand: {fileID: 0}
 --- !u!1 &915684935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,6 +1909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 915684937}
   - component: {fileID: 915684936}
+  - component: {fileID: 915684938}
   m_Layer: 0
   m_Name: Warehouse
   m_TagString: Untagged
@@ -1924,6 +1985,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1278005425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &915684938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915684935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22b4fbd767649e2bff27c0a9079cd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  produceBy: 0
+  transferFrom: {fileID: 0}
+  transferTo: {fileID: 0}
+  commandRunner: {fileID: 0}
+  produceCommand: {fileID: 0}
+  transferFromCommand: {fileID: 0}
+  transferToCommand: {fileID: 0}
 --- !u!1 &916961159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,6 +3140,7 @@ GameObject:
   - component: {fileID: 1737735438}
   - component: {fileID: 1737735437}
   - component: {fileID: 1737735439}
+  - component: {fileID: 1737735440}
   m_Layer: 0
   m_Name: Operator
   m_TagString: Untagged
@@ -3174,6 +3255,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4987682, y: 0.6497415}
   m_EdgeRadius: 0
+--- !u!114 &1737735440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737735434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22b4fbd767649e2bff27c0a9079cd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  produceBy: 0
+  transferFrom: {fileID: 484277671}
+  transferTo: {fileID: 915684938}
+  commandRunner: {fileID: 1737735436}
+  produceCommand: {fileID: 0}
+  transferFromCommand: {fileID: 49578921}
+  transferToCommand: {fileID: 311419365}
 --- !u!1 &1740785992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,6 +3726,7 @@ GameObject:
   - component: {fileID: 1940686379}
   - component: {fileID: 1940686378}
   - component: {fileID: 1940686377}
+  - component: {fileID: 1940686380}
   m_Layer: 0
   m_Name: ElevatorMoving
   m_TagString: Untagged
@@ -3740,6 +3841,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commandRunner: {fileID: 1940686376}
   tapReceiver: {fileID: 1940686378}
+--- !u!114 &1940686380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940686374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22b4fbd767649e2bff27c0a9079cd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  produceBy: 0
+  transferFrom: {fileID: 907388994}
+  transferTo: {fileID: 484277671}
+  commandRunner: {fileID: 1940686376}
+  produceCommand: {fileID: 0}
+  transferFromCommand: {fileID: 262543938}
+  transferToCommand: {fileID: 225237097}
 --- !u!1 &1944616876
 GameObject:
   m_ObjectHideFlags: 0
