@@ -9,14 +9,19 @@ namespace IdleGame.Resource
         [SerializeField] private ResourceContainer resourceContainer;
         [SerializeField] private TMP_Text resourceText;
         private float _currentResources;
-
+        private const string PlayerResourceKey = "PlayerResourceKey";
         public float CurrentResources
         {
-            get => _currentResources;
+            get
+            {
+                if(PlayerPrefs.HasKey(PlayerResourceKey)) _currentResources = PlayerPrefs.GetFloat(PlayerResourceKey, _currentResources);
+                return _currentResources;
+            }
             set
             {
                 _currentResources = value;
                 resourceText.text = Mathf.CeilToInt(_currentResources).ToString();
+                PlayerPrefs.SetFloat(PlayerResourceKey, _currentResources);
                 OnResourceUpdated?.Invoke();
             }
         }
@@ -25,7 +30,7 @@ namespace IdleGame.Resource
 
         private void Start()
         {
-            CurrentResources = 0;
+            CurrentResources = CurrentResources;
         }
 
         private void OnEnable()
