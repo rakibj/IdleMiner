@@ -46,7 +46,11 @@ namespace IdleGame.Resource
 
         private void OnCommandCompleted(CommandBehavior command)
         {
-            if(command == produceCommand) CurrentResources += produceByStat.currentValue;
+            if (command == produceCommand)
+            {
+                Debug.Log("produce command " + produceByStat.currentValue);
+                CurrentResources += produceByStat.currentValue;
+            }
             if (command == transferFromCommand)
             {
                 ReceiveResources(transferFrom, transferFrom.ReleaseResources(capacityStat.currentValue));

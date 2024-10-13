@@ -26,7 +26,10 @@ namespace IdleGame.Upgrades
         [SerializeField] private TMP_Text shaftLevelText;
         [SerializeField] private TMP_Text upgradeCostText;
         [SerializeField] private Button upgradeButton;
-        
+
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip upgradeClip;
+
         private PlayerResource _playerResource;
         private int _currentLevel = 0;
 
@@ -70,7 +73,7 @@ namespace IdleGame.Upgrades
             
             _playerResource.ReduceResourcesBy(upgradeCostGC.GetValue(_currentLevel));
 
-            
+            audioSource.PlayOneShot(upgradeClip);
             UpdateView();
         }
 
