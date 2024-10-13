@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace IdleGame.Upgrades
@@ -7,33 +8,38 @@ namespace IdleGame.Upgrades
         [SerializeField] private Stat minerCountStat;
         [SerializeField] private Stat walkingSpeedStat;
         [SerializeField] private Stat resourcePerMineStat;
-        [SerializeField] private Stat minerWorkDuration;
 
+        [SerializeField] private int minerCountIncrease = 1;
+        [SerializeField] private float walkingSpeedIncrease = 0.1f;
+        [SerializeField] private float resourcePerMineIncreaseBy = 1;
+
+        [SerializeField] private UpgradeRow minersRow;
+        [SerializeField] private UpgradeRow walkingSpeedRow;
+        [SerializeField] private UpgradeRow resourcePerMine;
+
+        private void Start()
+        {
+            UpdateView();
+        }
 
         [ContextMenu("Upgrade")]
         public void Upgrade()
         {
-            minerCountStat.SetCurrentValue(minerCountStat.currentValue + 1);
-            walkingSpeedStat.SetCurrentValue(walkingSpeedStat.currentValue + 0.1f);
-            resourcePerMineStat.SetCurrentValue(resourcePerMineStat.currentValue + 1);
+            minerCountStat.SetCurrentValue(minerCountStat.currentValue + minerCountIncrease);
+            walkingSpeedStat.SetCurrentValue(walkingSpeedStat.currentValue + walkingSpeedIncrease);
+            resourcePerMineStat.SetCurrentValue(resourcePerMineStat.currentValue + resourcePerMineIncreaseBy);
             
-            LogUpgrades();
+            UpdateView();
         }
 
-        public void LogUpgrades()
+        public void UpdateView()
         {
-            var totalExtraction = minerCountStat.currentValue * resourcePerMineStat.currentValue;
             var minerCount = Mathf.RoundToInt(minerCountStat.currentValue);
-            var walkingSpeed = walkingSpeedStat.currentValue;
-            var miningSpeed = resourcePerMineStat.currentValue/ minerWorkDuration.currentValue;
-            var workerCapacity = resourcePerMineStat.currentValue * minerWorkDuration.currentValue;
-
-            Debug.Log("totalExtraction " + totalExtraction);
-            Debug.Log("minerCount " + minerCount);
-            Debug.Log("walkingSpeed " + walkingSpeed);
-            Debug.Log("miningSpeed " + miningSpeed);
-            Debug.Log("workerCapacity " + workerCapacity);
-
+            
+            minersRow.Update(minerCount.ToString(), minerCountIncrease.ToString());
+            walkingSpeedRow.Update(walkingSpeedStat.currentValue.ToString(), walkingSpeedIncrease.ToString());
+            resourcePerMine.Update(resourcePerMineStat.currentValue.ToString(), (resourcePerMineIncreaseBy).ToString());
         }
+
     }
 }
