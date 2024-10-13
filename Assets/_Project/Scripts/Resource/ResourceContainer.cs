@@ -48,7 +48,6 @@ namespace IdleGame.Resource
         {
             if (command == produceCommand)
             {
-                Debug.Log("produce command " + produceByStat.currentValue);
                 CurrentResources += produceByStat.currentValue;
             }
             if (command == transferFromCommand)

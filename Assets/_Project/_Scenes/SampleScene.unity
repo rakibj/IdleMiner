@@ -4704,6 +4704,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 1599025535}
   audioSource: {fileID: 1146078794}
   upgradeClip: {fileID: 8300000, guid: 186757c0dccdd274583036075cbe576a, type: 3}
+  shaftLevelStat: {fileID: 11400000, guid: b446b3e9add71394f822f0a02649f7e1, type: 2}
 --- !u!114 &1146078792
 MonoBehaviour:
   m_ObjectHideFlags: 0

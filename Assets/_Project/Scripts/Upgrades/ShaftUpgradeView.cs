@@ -31,7 +31,13 @@ namespace IdleGame.Upgrades
         [SerializeField] private AudioClip upgradeClip;
 
         private PlayerResource _playerResource;
-        private int _currentLevel = 0;
+        [SerializeField] private Stat shaftLevelStat;
+
+        private int CurrentLevel
+        {
+            set => shaftLevelStat.SetCurrentValue(value);
+            get => (int) shaftLevelStat.currentValue;
+        }
 
         private void Awake()
         {
@@ -65,13 +71,13 @@ namespace IdleGame.Upgrades
         {
             if (!CanUpgrade()) return;
 
-            _currentLevel++;
+            CurrentLevel++;
 
-            minerCountStat.SetCurrentValue(minerCountIncreaseGC.GetValue(_currentLevel));
-            walkingSpeedStat.SetCurrentValue(walkingSpeedIncreaseGC.GetValue(_currentLevel));
-            resourcePerMineStat.SetCurrentValue(resourcePerMineIncreaseGC.GetValue(_currentLevel));
+            minerCountStat.SetCurrentValue(minerCountIncreaseGC.GetValue(CurrentLevel));
+            walkingSpeedStat.SetCurrentValue(walkingSpeedIncreaseGC.GetValue(CurrentLevel));
+            resourcePerMineStat.SetCurrentValue(resourcePerMineIncreaseGC.GetValue(CurrentLevel));
             
-            _playerResource.ReduceResourcesBy(upgradeCostGC.GetValue(_currentLevel));
+            _playerResource.ReduceResourcesBy(upgradeCostGC.GetValue(CurrentLevel));
 
             audioSource.PlayOneShot(upgradeClip);
             UpdateView();
@@ -81,19 +87,19 @@ namespace IdleGame.Upgrades
         {
             var minerCount = Mathf.RoundToInt(minerCountStat.currentValue);
             
-            minersRow.UpdateView(minerCount.ToString(), minerCountIncreaseGC.GetValue(_currentLevel + 1).ToString("F0"));
-            walkingSpeedRow.UpdateView(walkingSpeedStat.currentValue.ToString("F1"), walkingSpeedIncreaseGC.GetValue(_currentLevel + 1).ToString("F1"));
-            resourcePerMine.UpdateView(resourcePerMineStat.currentValue.ToString("F1"), (resourcePerMineIncreaseGC).GetValue(_currentLevel + 1).ToString("F1"));
+            minersRow.UpdateView(minerCount.ToString(), minerCountIncreaseGC.GetValue(CurrentLevel + 1).ToString("F0"));
+            walkingSpeedRow.UpdateView(walkingSpeedStat.currentValue.ToString("F1"), walkingSpeedIncreaseGC.GetValue(CurrentLevel + 1).ToString("F1"));
+            resourcePerMine.UpdateView(resourcePerMineStat.currentValue.ToString("F1"), (resourcePerMineIncreaseGC).GetValue(CurrentLevel + 1).ToString("F1"));
             
-            upgradeCostText.text = upgradeCostGC.GetValue(_currentLevel).ToString("F0");
+            upgradeCostText.text = upgradeCostGC.GetValue(CurrentLevel).ToString("F0");
             upgradeButton.interactable = CanUpgrade();
             
-            shaftLevelText.text = $"Shaft Level: {_currentLevel + 1}";
+            shaftLevelText.text = $"Shaft Level: {CurrentLevel + 1}";
         }
 
         private bool CanUpgrade()
         {
-            return _playerResource.CurrentResources >= upgradeCostGC.GetValue(_currentLevel);
+            return _playerResource.CurrentResources >= upgradeCostGC.GetValue(CurrentLevel);
         }
     }
 }
