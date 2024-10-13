@@ -9,7 +9,7 @@ namespace IdleGame.Upgrades
         [SerializeField] private TMP_Text currentText;
         [SerializeField] private TMP_Text upgradeByText;
 
-        public void Update(string current, string upgradeBy)
+        public void UpdateView(string current, string upgradeBy)
         {
             currentText.text = current;
             upgradeByText.text = upgradeBy;
