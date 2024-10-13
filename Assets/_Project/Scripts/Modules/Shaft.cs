@@ -21,7 +21,7 @@ namespace IdleGame.Modules
             numberOfMinerStat.OnUpdated -= OnMinerCountUpdated;
         }
 
-        private void OnMinerCountUpdated()
+        private void OnMinerCountUpdated(Stat stat)
         {
             if(numberOfMinerStat.currentValue > _miners.Count)
             {

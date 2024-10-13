@@ -8,12 +8,12 @@ namespace IdleGame
     {
         public float defaultValue;
         public float currentValue;
-        public Action OnUpdated;
+        public Action<Stat> OnUpdated;
 
         public void SetCurrentValue(float value)
         {
             currentValue = value;
-            OnUpdated?.Invoke();
+            OnUpdated?.Invoke(this);
         }
     }
 }
