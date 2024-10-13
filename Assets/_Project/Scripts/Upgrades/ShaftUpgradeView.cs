@@ -1,4 +1,5 @@
 using System;
+using IdleGame.Growth;
 using IdleGame.Resource;
 using TMPro;
 using UnityEngine;
@@ -12,11 +13,11 @@ namespace IdleGame.Upgrades
         [SerializeField] private Stat walkingSpeedStat;
         [SerializeField] private Stat resourcePerMineStat;
 
-        [SerializeField] private int minerCountIncrease = 1;
-        [SerializeField] private float walkingSpeedIncrease = 0.1f;
-        [SerializeField] private float resourcePerMineIncreaseBy = 1;
+        [SerializeField] private GrowthCalculator minerCountIncreaseGC;
+        [SerializeField] private GrowthCalculator walkingSpeedIncreaseGC;
+        [SerializeField] private GrowthCalculator resourcePerMineIncreaseGC;
 
-        [SerializeField] private float upgradeCost = 20;
+        [SerializeField] private GrowthCalculator upgradeCostGC;
 
         [SerializeField] private UpgradeRow minersRow;
         [SerializeField] private UpgradeRow walkingSpeedRow;
@@ -26,6 +27,7 @@ namespace IdleGame.Upgrades
         [SerializeField] private Button upgradeButton;
         
         private PlayerResource _playerResource;
+        private int _currentLevel = 0;
 
         private void Awake()
         {
@@ -58,12 +60,15 @@ namespace IdleGame.Upgrades
         public void Upgrade()
         {
             if (!CanUpgrade()) return;
+
+            _currentLevel++;
+
+            minerCountStat.SetCurrentValue(minerCountIncreaseGC.GetValue(_currentLevel));
+            walkingSpeedStat.SetCurrentValue(walkingSpeedIncreaseGC.GetValue(_currentLevel));
+            resourcePerMineStat.SetCurrentValue(resourcePerMineIncreaseGC.GetValue(_currentLevel));
             
-            minerCountStat.SetCurrentValue(minerCountStat.currentValue + minerCountIncrease);
-            walkingSpeedStat.SetCurrentValue(walkingSpeedStat.currentValue + walkingSpeedIncrease);
-            resourcePerMineStat.SetCurrentValue(resourcePerMineStat.currentValue + resourcePerMineIncreaseBy);
-            
-            _playerResource.ReduceResourcesBy(upgradeCost);
+            _playerResource.ReduceResourcesBy(upgradeCostGC.GetValue(_currentLevel));
+
             
             UpdateView();
         }
@@ -72,17 +77,17 @@ namespace IdleGame.Upgrades
         {
             var minerCount = Mathf.RoundToInt(minerCountStat.currentValue);
             
-            minersRow.UpdateView(minerCount.ToString(), minerCountIncrease.ToString());
-            walkingSpeedRow.UpdateView(walkingSpeedStat.currentValue.ToString(), walkingSpeedIncrease.ToString());
-            resourcePerMine.UpdateView(resourcePerMineStat.currentValue.ToString(), (resourcePerMineIncreaseBy).ToString());
+            minersRow.UpdateView(minerCount.ToString(), minerCountIncreaseGC.GetValue(_currentLevel + 1).ToString("F0"));
+            walkingSpeedRow.UpdateView(walkingSpeedStat.currentValue.ToString("F1"), walkingSpeedIncreaseGC.GetValue(_currentLevel + 1).ToString("F1"));
+            resourcePerMine.UpdateView(resourcePerMineStat.currentValue.ToString("F1"), (resourcePerMineIncreaseGC).GetValue(_currentLevel + 1).ToString("F1"));
             
-            upgradeCostText.text = upgradeCost.ToString();
+            upgradeCostText.text = upgradeCostGC.GetValue(_currentLevel).ToString("F0");
             upgradeButton.interactable = CanUpgrade();
         }
 
         private bool CanUpgrade()
         {
-            return _playerResource.CurrentResources >= upgradeCost;
+            return _playerResource.CurrentResources >= upgradeCostGC.GetValue(_currentLevel);
         }
     }
 }

@@ -1449,7 +1449,7 @@ PrefabInstance:
     - target: {fileID: 3609474524865301112, guid: 209fefe733cf85844a60b8f58c0e17b2,
         type: 3}
       propertyPath: m_text
-      value: Miners
+      value: Walking Speed
       objectReference: {fileID: 0}
     - target: {fileID: 7078324557778687000, guid: 209fefe733cf85844a60b8f58c0e17b2,
         type: 3}
@@ -4687,12 +4687,15 @@ MonoBehaviour:
   walkingSpeedStat: {fileID: 11400000, guid: cd3765d4bd2b13442bc3d2ebbbe660eb, type: 2}
   resourcePerMineStat: {fileID: 11400000, guid: e807d800f6d64e243be95944d38c24c8,
     type: 2}
-  minerCountIncrease: 1
-  walkingSpeedIncrease: 0.1
-  resourcePerMineIncreaseBy: 3
-  upgradeCost: 20
-  minersRow: {fileID: 251938809}
-  walkingSpeedRow: {fileID: 2058188716}
+  minerCountIncreaseGC: {fileID: 11400000, guid: 44a7352fe6a6def478195d653833d68b,
+    type: 2}
+  walkingSpeedIncreaseGC: {fileID: 11400000, guid: 97a8935ea738aa54093d89465fbd8151,
+    type: 2}
+  resourcePerMineIncreaseGC: {fileID: 11400000, guid: 17993b1ba68f55545b22463179f225de,
+    type: 2}
+  upgradeCostGC: {fileID: 11400000, guid: 9f6d717221365b94b85bf580e4b8b347, type: 2}
+  minersRow: {fileID: 5550339831591808744}
+  walkingSpeedRow: {fileID: 251938809}
   resourcePerMine: {fileID: 2058188716}
   upgradeCostText: {fileID: 2048185550}
   upgradeButton: {fileID: 1599025535}
@@ -4709,7 +4712,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1146078790}
-  canvasGroup: {fileID: 0}
   tapReceiver: {fileID: 948523685}
   closeButton: {fileID: 492131752}
 --- !u!225 &1146078793
@@ -6806,7 +6808,7 @@ PrefabInstance:
     - target: {fileID: 3609474524865301112, guid: 209fefe733cf85844a60b8f58c0e17b2,
         type: 3}
       propertyPath: m_text
-      value: Walking Speed
+      value: Resource per mine
       objectReference: {fileID: 0}
     - target: {fileID: 7078324557778687000, guid: 209fefe733cf85844a60b8f58c0e17b2,
         type: 3}
@@ -6959,7 +6961,7 @@ PrefabInstance:
     - target: {fileID: 3609474524865301112, guid: 209fefe733cf85844a60b8f58c0e17b2,
         type: 3}
       propertyPath: m_text
-      value: Total Extraction
+      value: Miners
       objectReference: {fileID: 0}
     - target: {fileID: 7078324557778687000, guid: 209fefe733cf85844a60b8f58c0e17b2,
         type: 3}
@@ -7066,6 +7068,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 209fefe733cf85844a60b8f58c0e17b2, type: 3}
+--- !u!114 &5550339831591808744 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3318727194126951369, guid: 209fefe733cf85844a60b8f58c0e17b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5550339831591808743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a826451cda495ca1fc6f508a4b305a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7637215115217453321
 PrefabInstance:
   m_ObjectHideFlags: 0

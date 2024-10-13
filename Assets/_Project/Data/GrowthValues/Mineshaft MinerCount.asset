@@ -12,27 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009d4f83cbbc40b3a7c6e6d969732cd1, type: 3}
   m_Name: Mineshaft MinerCount
   m_EditorClassIdentifier: 
-  startingValue: 1
-  count: 100
+  startingValue: 0
+  count: 20
   growthRate: 0.1
+  floorValues: 0
   growthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   - 1
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2

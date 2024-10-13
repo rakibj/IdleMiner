@@ -26,5 +26,10 @@ namespace IdleGame.Growth
             return growthValues;
         }
 
+        public float GetValue(int level)
+        {
+            return growthValues[level];
+        }
+
     }
 }
