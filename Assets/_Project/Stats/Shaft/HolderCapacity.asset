@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f902ad81278b425ea82a9a6713a424b1, type: 3}
   m_Name: HolderCapacity
   m_EditorClassIdentifier: 
-  defaultValue: 50
-  currentValue: 50
+  defaultValue: Infinity
+  currentValue: Infinity

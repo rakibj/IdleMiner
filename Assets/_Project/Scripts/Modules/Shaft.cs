@@ -12,6 +12,25 @@ namespace IdleGame.Modules
         private List<MinerController> _miners = new List<MinerController>();
         public int MinerCount => _miners.Count;
 
+        private void OnEnable()
+        {
+            numberOfMinerStat.OnUpdated += OnMinerCountUpdated;
+        }
+        private void OnDisable()
+        {
+            numberOfMinerStat.OnUpdated -= OnMinerCountUpdated;
+        }
+
+        private void OnMinerCountUpdated()
+        {
+            if(numberOfMinerStat.currentValue > _miners.Count)
+            {
+                var toAdd = Mathf.CeilToInt(numberOfMinerStat.currentValue - _miners.Count);
+                for (int i = 0; i < toAdd; i++)
+                    AddMiner(i);
+            }
+        }
+
         private void Start()
         {
             for (var i = 0; i < numberOfMinerStat.currentValue; i++)

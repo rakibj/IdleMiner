@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace IdleGame
@@ -7,5 +8,12 @@ namespace IdleGame
     {
         public float defaultValue;
         public float currentValue;
+        public Action OnUpdated;
+
+        public void SetCurrentValue(float value)
+        {
+            currentValue = value;
+            OnUpdated?.Invoke();
+        }
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f902ad81278b425ea82a9a6713a424b1, type: 3}
-  m_Name: ProductionAmount
+  m_Name: Resource Per Mine
   m_EditorClassIdentifier: 
   defaultValue: 10
   currentValue: 10
