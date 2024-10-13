@@ -17,8 +17,11 @@ namespace IdleGame.Resource
             {
                 _currentResources = value;
                 resourceText.text = Mathf.CeilToInt(_currentResources).ToString();
+                OnResourceUpdated?.Invoke();
             }
         }
+
+        public Action OnResourceUpdated;
 
         private void Start()
         {
@@ -38,6 +41,11 @@ namespace IdleGame.Resource
         private void AddResources(float amount)
         {
             CurrentResources += amount;
+        }
+
+        public void ReduceResourcesBy(float amount)
+        {
+            CurrentResources -= amount;
         }
         
     }

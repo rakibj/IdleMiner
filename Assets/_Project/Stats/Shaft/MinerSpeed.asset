@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MinerSpeed
   m_EditorClassIdentifier: 
   defaultValue: 0.5
-  currentValue: 0.5
+  currentValue: 2.1
