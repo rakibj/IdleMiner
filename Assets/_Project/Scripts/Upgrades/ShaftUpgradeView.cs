@@ -23,6 +23,7 @@ namespace IdleGame.Upgrades
         [SerializeField] private UpgradeRow walkingSpeedRow;
         [SerializeField] private UpgradeRow resourcePerMine;
 
+        [SerializeField] private TMP_Text shaftLevelText;
         [SerializeField] private TMP_Text upgradeCostText;
         [SerializeField] private Button upgradeButton;
         
@@ -83,6 +84,8 @@ namespace IdleGame.Upgrades
             
             upgradeCostText.text = upgradeCostGC.GetValue(_currentLevel).ToString("F0");
             upgradeButton.interactable = CanUpgrade();
+            
+            shaftLevelText.text = $"Shaft Level: {_currentLevel + 1}";
         }
 
         private bool CanUpgrade()
