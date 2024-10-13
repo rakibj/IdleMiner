@@ -86,10 +86,14 @@ namespace IdleGame.Upgrades
         public void UpdateView()
         {
             var minerCount = Mathf.RoundToInt(minerCountStat.currentValue);
+
+            var minerCountIncrease = minerCountIncreaseGC.GetValue(CurrentLevel + 1) - minerCount;
+            var walkingSpeedIncrease = walkingSpeedIncreaseGC.GetValue(CurrentLevel + 1) - walkingSpeedStat.currentValue;
+            var resourcePerMineIncrease = resourcePerMineIncreaseGC.GetValue(CurrentLevel + 1) - resourcePerMineStat.currentValue;
             
-            minersRow.UpdateView(minerCount.ToString(), minerCountIncreaseGC.GetValue(CurrentLevel + 1).ToString("F0"));
-            walkingSpeedRow.UpdateView(walkingSpeedStat.currentValue.ToString("F1"), walkingSpeedIncreaseGC.GetValue(CurrentLevel + 1).ToString("F1"));
-            resourcePerMine.UpdateView(resourcePerMineStat.currentValue.ToString("F1"), (resourcePerMineIncreaseGC).GetValue(CurrentLevel + 1).ToString("F1"));
+            minersRow.UpdateView(minerCount.ToString(), minerCountIncrease.ToString("F0"));
+            walkingSpeedRow.UpdateView(walkingSpeedStat.currentValue.ToString("F1"), walkingSpeedIncrease.ToString("F1"));
+            resourcePerMine.UpdateView(resourcePerMineStat.currentValue.ToString("F1"), resourcePerMineIncrease.ToString("F1"));
             
             upgradeCostText.text = upgradeCostGC.GetValue(CurrentLevel).ToString("F0");
             upgradeButton.interactable = CanUpgrade();
