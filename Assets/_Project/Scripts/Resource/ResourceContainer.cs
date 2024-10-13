@@ -17,8 +17,9 @@ namespace IdleGame.Resource
         [SerializeField] private float _currentResources = 0f;
         [SerializeField] private TMP_Text resourceAmountText;
         [SerializeField] private Stat capacityStat;
+        public Action<float> OnResourcesReceived;
 
-        private float CurrentResources
+        public float CurrentResources
         {
             set
             {
@@ -48,7 +49,7 @@ namespace IdleGame.Resource
             if(command == produceCommand) CurrentResources += produceByStat.currentValue;
             if (command == transferFromCommand)
             {
-                ReceiveResources(transferFrom, transferFrom.ReleaseResources());
+                ReceiveResources(transferFrom, transferFrom.ReleaseResources(capacityStat.currentValue));
             }
             if (command == transferToCommand)
             {
@@ -60,12 +61,13 @@ namespace IdleGame.Resource
         private void ReceiveResources(ResourceContainer from, float resources)
         {
             CurrentResources += resources;
+            OnResourcesReceived?.Invoke(resources);
         }
 
-        public float ReleaseResources()
+        public float ReleaseResources(float amount = Mathf.Infinity)
         {
-            var tempResources = CurrentResources;
-            CurrentResources = 0f;
+            var tempResources = Mathf.Min(CurrentResources, amount);
+            CurrentResources -= tempResources;
             return tempResources;
         }
     }
